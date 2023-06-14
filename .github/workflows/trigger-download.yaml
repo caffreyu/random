@@ -1,0 +1,19 @@
+---
+name: Trigger download files
+    
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger workflow in test
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: caffreyu/test
+          event-type: test-workflow
+          client-payload: '{"ref" : "${{ github.ref }}"}'
