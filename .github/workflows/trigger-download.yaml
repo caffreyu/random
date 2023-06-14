@@ -13,7 +13,7 @@ jobs:
       - name: Trigger workflow in test
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           repository: caffreyu/test
           event-type: test-workflow
           client-payload: '{"ref" : "${{ github.ref }}"}'
